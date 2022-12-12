@@ -126,7 +126,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 CORS_ALLOWED_ORIGINS = [
-    "https://animeculture.herokuapp.com",
+    "https://animeculture.up.railway.app/",
     "https://localhost:3000",
     "https://127.0.0.1:8000"
 ]
