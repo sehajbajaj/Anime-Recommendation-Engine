@@ -5,4 +5,4 @@ import axios from "axios";
 // const url = "http://127.0.0.1:8000/api/v1/anime";
 const url = "https://animeculture.up.railway.app/api/v1/anime";
 export const recommendAnime = (animeId) =>
-  axios.get(`/${animeId}/recommend/`);
+  axios.get(`${url}/${animeId}/recommend/`);
