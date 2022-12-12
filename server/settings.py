@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-rg7jcin^*weqcz_j(5eo_40npu&2h3phkqty36unbi%zb7cf=@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["https://animeculture.up.railway.app/"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -125,11 +125,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-CORS_ALLOWED_ORIGINS = [
-    "https://animeculture.up.railway.app/",
-    "https://localhost:3000",
-    "https://127.0.0.1:8000"
-]
 
 STATIC_URL = '/static/'
 
