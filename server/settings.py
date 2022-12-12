@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-rg7jcin^*weqcz_j(5eo_40npu&2h3phkqty36unbi%zb7cf=@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["https://animeculture.up.railway.app/"]
 
 
 # Application definition
