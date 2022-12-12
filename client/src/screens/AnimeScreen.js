@@ -2,23 +2,25 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Container, Card } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { getRecommendations } from "../redux/actions/recommendations";
 import axios from "axios";
 
 const AnimeScreen = () => {
-  const dispatch = useDispatch();
-  const recommendations = useSelector(
-    (state) => state.recommendations.recommendations
-  );
   const params = useParams();
   const [currAnime, setCurrAnime] = useState(null); //Sets the current anime
+  const [recAnimeAlgo, setrecAnimeAlgo] = useState([]);
   const [recAnime, setrecAnime] = useState([]); //Sets the recommended anime
 
   /* Getting Recommendations for Current Anime */
   useEffect(() => {
-    dispatch(getRecommendations(params.id));
-    console.log("recommendation", recommendations);
-  }, [dispatch]);
+    axios
+      .get(
+        `https://animeculture.up.railway.app/api/v1/anime/${params.id}/recommend/`
+      )
+      .then((response) => {
+        setrecAnimeAlgo(response.data.recommendations);
+        console.log(response.data.recommendations);
+      });
+  }, [params]);
 
   /* Fetching the Anime from Kitsu API */
   useEffect(() => {
@@ -98,20 +100,18 @@ const AnimeScreen = () => {
             ) : null
           )}
 
-          {/* Mapping the recommendations */}
-          {recommendations &&
-            Object.values(recommendations).map((anime) => (
-              <Col key={anime.id} sm={12} md={6} xl={3}>
-                <Card className="my-3 p-3 rounded">
-                  <Card.Img src={anime.poster_image} />
-                  <Card.Body>
-                    <Card.Title as="h5">
-                      <strong>{anime.title_en}</strong>
-                    </Card.Title>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
+          {recAnimeAlgo?.data?.map((anime, index) => (
+            <Col key={index} sm={12} md={6} xl={3}>
+              <Card className="my-3 p-3 rounded">
+                <Card.Img src={anime.poster_image} />
+                <Card.Body>
+                  <Card.Title as="h5">
+                    <strong>{anime.title_en}</strong>
+                  </Card.Title>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
         </Row>
       </div>
     </Container>
