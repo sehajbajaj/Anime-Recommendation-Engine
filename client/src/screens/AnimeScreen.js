@@ -11,7 +11,7 @@ const AnimeScreen = () => {
     (state) => state.recommendations.recommendations
   );
   const params = useParams();
-  const [currAnime, setCurrAnime] = useState(null); //Sets the current anime
+  const [currAnime, setCurrAnime] = useState(null);
   const [recAnime, setrecAnime] = useState([]); //Sets the recommended anime
 
   /* Getting Recommendations for Current Anime */
